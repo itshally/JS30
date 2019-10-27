@@ -1,8 +1,8 @@
 html {
      font-size: 10px;
      background: url(img/background.jpg) bottom center;
-     background-size: contain;
-     background-position: center;
+     background-size: cover;
+     background-color: #000000;
    }
    
    body,html {
