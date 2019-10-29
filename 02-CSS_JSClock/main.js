@@ -1,30 +1,16 @@
-const hourHand = document.querySelector('.hour-hand'),
-      minuteHand = document.querySelector('.min-hand'),
-      secondHand = document.querySelector('.second-hand');
-
-setTime = () => {
+setInterval(() => {
      
      // variables
      const time = new Date(),
-           seconds = time.getSeconds(),
-           minutes = time.getMinutes(),
-           hours = time.getHours(),
-           secondDeg = timeDeg(seconds, 60),
-           minuteDeg = timeDeg(minutes, 60),
-           hourDeg = timeDeg(hours, 12);
-           
-     console.log(`second: ${seconds} = degree: ${secondDeg}`)
+           hands = document.querySelector('.clock-face'),
+           handPositions = [
+               time.getHours() / 24,
+               time.getMinutes() / 60,
+               time.getSeconds() / 60
+          ];
+
+     handPositions.forEach((angle, index) => {
+          hands.children[index].style.transform =  `rotate(${angle}turn)`
+     })
      
-     // second hand
-     handStyle(secondHand, secondDeg)
-
-     // minute hand
-     handStyle(minuteHand, minuteDeg)
-
-     // hour hand
-     handStyle(hourHand, hourDeg)
-}
-
-setInterval(setTime, 1000);
-const timeDeg = (hand, x) => ((hand / x) * 360) + 90,
-      handStyle = (hand, deg) => hand.style.transform = `rotate(${deg}deg)`;
+}, 1000);
