@@ -1,5 +1,6 @@
-//play sounds
-function playSound(event){
+var playing = document.querySelectorAll('.key');
+
+window.addEventListener('keydown', function playSound(event) {
      const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
      const key = document.querySelector(`.key[data-key="${event.keyCode}"]`);
      
@@ -7,15 +8,9 @@ function playSound(event){
      audio.currentTime = 0;
      audio.play();
      key.classList.add('playing');
-}
+});
 
-// resets transition when key is pressed
-function removeTransition(event){
+playing.forEach(x => x.addEventListener('transitionend', function removeTransition(event) {
      if(event.propertyName !== 'transform') return;
      this.classList.remove('playing')
-}
-
-var playing = document.querySelectorAll('.key');
-playing.forEach(x => x.addEventListener('transitionend', removeTransition));
-
-window.addEventListener('keydown', playSound);
+}));
