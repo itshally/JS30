@@ -12,11 +12,13 @@ setTime = () => {
            secondDeg = timeDeg(seconds, 60),
            minuteDeg = timeDeg(minutes, 60),
            hourDeg = timeDeg(hours, 12);
-
+           
+     console.log(`second: ${seconds} = degree: ${secondDeg}`)
+     
      // second hand
      handStyle(secondHand, secondDeg)
 
-     // minute handg)
+     // minute hand
      handStyle(minuteHand, minuteDeg)
 
      // hour hand
