@@ -7,15 +7,19 @@ ctx.strokeStyle = "pink";
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
 ctx.lineWidth = 100;
+ctx.globalCompositeOperation = 'multiply';
 
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
+let hue = 0;
+let direction = true;
+
 
 function draw(e){
-     // e.preventDefault();
      if(!isDrawing) return; //stop the function when not running
-     console.log(e)
+
+     ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 
      ctx.beginPath();
 
@@ -28,7 +32,16 @@ function draw(e){
 
      //destructuring an array
      [lastX, lastY] = [e.offsetX, e.offsetY];
+
+     hue++;
+
+     if(hue >= 360) hue = 0;
+
+     if(ctx.lineWidth >= 100 || ctx.lineWidth <= 1) direction = !direction;
+     
+     (direction) ? ctx.lineWidth++ : ctx.lineWidth-- ;
 }
+
 
 canvas.addEventListener('mousedown', (e) => {
      isDrawing = true;
