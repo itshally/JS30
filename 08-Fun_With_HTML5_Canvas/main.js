@@ -6,6 +6,7 @@ canvas.height = window.innerHeight;
 ctx.strokeStyle = "pink";
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
+ctx.lineWidth = 100;
 
 let isDrawing = false;
 let lastX = 0;
@@ -27,11 +28,9 @@ function draw(e){
 
      //destructuring an array
      [lastX, lastY] = [e.offsetX, e.offsetY];
-     // lastX = e.offsetX;
-     // lastY = e.offsetY;
 }
 
-canvas.addEventListener('mousedown', () => {
+canvas.addEventListener('mousedown', (e) => {
      isDrawing = true;
      [lastX, lastY] = [e.offsetX, e.offsetY];
 });
