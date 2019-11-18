@@ -31,7 +31,8 @@ function paintToCanvas() {
 
           let pixels = ctx.getImageData(0, 0, width, height);
           // pixels = redEffect(pixels);
-          pixels = rgbSplit(pixels);
+          // pixels = rgbSplit(pixels);
+          pixels = greenScreen(pixels);
           ctx.putImageData(pixels, 0, 0)
      }, 16)
 }
